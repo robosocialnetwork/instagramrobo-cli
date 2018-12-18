@@ -1,4 +1,5 @@
 const InstagramPageBase = require('./InstagramPageBase');
+const UserPage = require('./UserPage')
 
 class IndexPage extends InstagramPageBase{
     constructor() {
@@ -37,6 +38,7 @@ class IndexPage extends InstagramPageBase{
         }, userName); 
 
         await page.waitForSelector('.XjzKX');
+        return new UserPage();
     }
 }
 

@@ -1,4 +1,5 @@
 const InstagramPageBase = require('./InstagramPageBase');
+const IndexPage = require('./IndexPage');
 
 class LoginPage extends InstagramPageBase{
     constructor(){
@@ -16,7 +17,7 @@ class LoginPage extends InstagramPageBase{
         await page.type('input[name="password"]', senha);
         await page.click('button[type="submit"]');        
 
-        return page;
+        return new IndexPage();;
     }
 }
 

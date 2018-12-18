@@ -11,17 +11,28 @@ async function teste(){
     await browser.config(URL);
 
     const loginInst = new loginPage();
-    await loginInst.login('victorjoaobarbosa2017@gmail.com', 'f3rr4r11');
-    loginInst.screenshot('algo');
+    const indexPage = await loginInst.login('victorjoaobarbosa2017@gmail.com', 'f3rr4r11');
+    await loginInst.screenshot('login');
 
-    const indexPage = new IndexPage();
-    await indexPage.selectUser('saudavelemdobro');
-    await indexPage.screenshot('blabla');
-    // const userPage = new UserPage(loginInst.page,'fernandinho');
-    
-    // return userPage.teste();
+    const userPage = await indexPage.selectUser('saudavelemdobro');
+    await userPage.screenshot('userpageScreenshot');
 
-    // await loginInst2.teste();
+    // const postConts = await userPage.getLastPostCounts();
+    // console.log(postConts)
+    // await userPage.screenshot('post-mouseover');
+
+    const items = await userPage.getFollowers(null, 100000);
+    await userPage.screenshot('userPage-FollowersWindowOpen');
+    console.log(items.length);
+    // const valor = await userPage.getUser();
+    // console.log(valor);
+  //  try
+  //  {
+  //    await userPage.follow();
+  //  }
+  //  catch(e){
+  //       console.log(e)
+  //  }
 }
 
 
